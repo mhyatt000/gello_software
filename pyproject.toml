@@ -1,3 +1,11 @@
+[build-system]
+requires = ["uv_build>=0.9.15"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+module-name = "gello"
+
 [project]
 name = "gello-software"
 version = "0.1.0"
