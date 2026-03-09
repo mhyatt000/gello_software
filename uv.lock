@@ -541,9 +541,9 @@ wheels = [
 ]
 
 [[package]]
-name = "gello-software"
+name = "gello"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "dm-control" },
     { name = "numpy-quaternion" },
@@ -569,7 +569,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "gello-software" },
+    { name = "gello" },
 ]
 
 [package.metadata]
@@ -597,7 +597,7 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "gello-software", virtual = "." }]
+dev = [{ name = "gello" }]
 
 [[package]]
 name = "glfw"

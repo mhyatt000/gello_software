@@ -7,7 +7,7 @@ module-root = ""
 module-name = "gello"
 
 [project]
-name = "gello-software"
+name = "gello"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -45,5 +45,5 @@ gello-software = { workspace = true, editable = true }
 
 [dependency-groups]
 dev = [
-    "gello-software",
+    "gello",
 ]
