@@ -49,15 +49,25 @@ PORT_CONFIG_MAP: Dict[str, DynamixelRobotConfig] = {
         joint_ids=(1, 2, 3, 4, 5, 6, 7),
         joint_offsets=(
             3 * np.pi / 2,
+            3 * np.pi / 2,
+            6 * np.pi / 2,
+            1 * np.pi / 2,
             2 * np.pi / 2,
             1 * np.pi / 2,
-            4 * np.pi / 2,
-            -2 * np.pi / 2 + 2 * np.pi,
-            3 * np.pi / 2,
-            4 * np.pi / 2,
+            0 * np.pi / 2,
         ),
-        joint_signs=(1, -1, 1, 1, 1, -1, 1),
-        gripper_config=(8, 195, 152),
+        joint_signs=(1, 1, 1, 1, 1, 1, 1),
+        gripper_config=(8,  153,196),
+        ### joint_offsets=(
+            ### # 3 * np.pi / 2,
+            ### 1 * np.pi / 2,
+            ### 3 * np.pi / 2,
+            ### 2 * np.pi / 2,
+            ### 1 * np.pi / 2,
+            ### 2 * np.pi / 2,
+            ### 1 * np.pi / 2,
+            ### 2 * np.pi / 2,
+        ### ),
     ),
     # yam
     "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FTA2U4GA-if00-port0": DynamixelRobotConfig(
@@ -106,6 +116,10 @@ PORT_CONFIG_MAP: Dict[str, DynamixelRobotConfig] = {
         gripper_config=(7, 286, 248),
     ),
 }
+PORT_CONFIG_MAP[
+    "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT94W6IZ-if00-port0"
+    ] = PORT_CONFIG_MAP[
+    "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT3M9NVB-if00-port0"]
 
 
 class GelloAgent(Agent):
@@ -129,5 +143,6 @@ class GelloAgent(Agent):
             config = PORT_CONFIG_MAP[port]
             self._robot = config.make_robot(port=port, start_joints=start_joints)
 
-    def act(self, obs: Dict[str, np.ndarray]) -> np.ndarray:
+    # def act(self, obs: Dict[str, np.ndarray]) -> np.ndarray:
+    def act(self) -> np.ndarray:
         return self._robot.get_joint_state()
